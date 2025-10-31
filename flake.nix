@@ -19,20 +19,26 @@
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
     let
-      # You can add new hosts here
-      hosts = [ "wsl" "desktop" ];
+      # A list of hosts with their corresponding profiles
+      hosts = [
+        { name = "wsl"; profile = "desktop"; }
+        { name = "desktop"; profile = "desktop"; }
+      ];
 
       # Helper function to generate a NixOS configuration for a given host
       mkHost = host:
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/${host}/configuration.nix ];
+          modules = [
+            ./hosts/${host.name}/configuration.nix
+            ./profiles/${host.profile}
+          ];
         };
 
       # Generates a set of NixOS configurations for each host
       nixosConfigurations = builtins.listToAttrs (map (host: {
-        name = host;
+        name = host.name;
         value = mkHost host;
       }) hosts);
     in

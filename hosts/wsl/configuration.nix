@@ -15,30 +15,11 @@
 
   wsl.enable = true;
 
-  nix = {
-    package = pkgs.nixVersions.latest;
-    settings = {
-      experimental-features = ["nix-command" "flakes"];
-    };
-  };
-
-  environment.systemPackages = with pkgs; [
-    ripgrep
-    ruby
-  ];
-
-  users.users.ryan = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-  };
-
   home-manager = {
     extraSpecialArgs = { inherit inputs pkgs; };
     users = {
       ryan = import ../../home/default.nix;
     };
   };
-
-  system.stateVersion = "23.11";
 }
 
