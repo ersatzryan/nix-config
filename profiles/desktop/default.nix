@@ -5,9 +5,4 @@
   imports = [
     ../base.nix
   ];
-
-  environment.systemPackages = with pkgs; [
-    ripgrep
-    ruby
-  ];
 }
