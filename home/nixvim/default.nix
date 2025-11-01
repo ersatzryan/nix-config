@@ -7,4 +7,6 @@
     ./options.nix
     ./plugins
   ];
+
+  programs.nixvim.enable = true;
 }
