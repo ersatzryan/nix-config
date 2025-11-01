@@ -4,6 +4,7 @@
   imports = [
     inputs.nixvim.homeModules.nixvim
     ./nixvim
+    ./git.nix
   ];
 
   home = {
@@ -14,7 +15,6 @@
   programs = {
     home-manager.enable = true;
     nixvim.enable = true;
-    git.enable = true;
     tmux = {
       enable = true;
       baseIndex = 1;
