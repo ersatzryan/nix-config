@@ -24,4 +24,14 @@
       };
     };
   };
+
+  programs.gh = {
+    enable = true;
+    settings = {
+      aliases = {
+        co = "pr checkout";
+        prs = "pr list";
+      };
+    };
+  };
 }
