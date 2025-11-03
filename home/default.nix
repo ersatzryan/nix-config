@@ -4,6 +4,7 @@
   imports = [
     inputs.nixvim.homeModules.nixvim
     ./nixvim
+    ./bat.nix
     ./git.nix
     ./tmux.nix
   ];
