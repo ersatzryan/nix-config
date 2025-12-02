@@ -5,4 +5,6 @@
   imports = [
     ../base.nix
   ];
+
+  nixpkgs.config.allowUnfree = true;
 }

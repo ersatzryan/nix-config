@@ -1,3 +1,5 @@
+{ pkgs, ...}:
+
 {
   programs.git = {
     enable = true;
@@ -27,6 +29,7 @@
 
   programs.gh = {
     enable = true;
+    extensions = [ pkgs.gh-copilot];
     settings = {
       aliases = {
         co = "pr checkout";
