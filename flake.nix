@@ -17,7 +17,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs:
+  outputs = { nixpkgs,... }@inputs:
     let
       # A list of hosts with their corresponding profiles
       hosts = [
