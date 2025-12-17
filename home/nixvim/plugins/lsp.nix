@@ -19,19 +19,19 @@
       };
     };
     servers = {
-      ruby_lsp = {
-        enable = true;
-        autostart = true;
-      };
+      bashls.enable = true;
+      dockerls.enable = true;
       nixd = {
         enable = true;
-        autostart = true;
         settings = {
           nixpkgs = {
             expr = "import <nixpkgs> { }";
           };
         };
       };
+      postgres_lsp.enable = true;
+      ruby_lsp.enable = true;
+      terraformls.enable = true;
     };
   };
 }

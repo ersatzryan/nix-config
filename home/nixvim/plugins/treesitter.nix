@@ -4,7 +4,10 @@
   programs.nixvim.plugins.treesitter = {
     enable = true;
     settings = {
-      auto_install = true;
+      highlight = {
+        additional_vim_regex_highlighting = true;
+        enable = true;
+      };
       indent.enable = true;
     };
   };
