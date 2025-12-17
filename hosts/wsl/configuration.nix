@@ -13,7 +13,10 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
-  wsl.enable = true;
+  wsl = {
+    enable = true;
+    defaultUser = "ryan";
+  };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs pkgs; };
