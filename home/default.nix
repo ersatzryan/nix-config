@@ -16,6 +16,7 @@
 
   programs = {
     home-manager.enable = true;
+    opencode.enable = true;
   };
 
   home.stateVersion = "23.11";
