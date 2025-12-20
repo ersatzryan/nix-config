@@ -18,11 +18,30 @@
     defaultUser = "ryan";
   };
 
+  nixpkgs.config.allowUnfree = true;
+
+  nix = {
+    package = pkgs.nixVersions.latest;
+    settings = {
+      experimental-features = ["nix-command" "flakes"];
+    };
+  };
+
+  # Basic user setup
+  users.users.ryan = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+  };
+
+  system.stateVersion = "23.11";
+
   home-manager = {
     extraSpecialArgs = { inherit inputs pkgs; };
     users = {
       ryan = import ../../home/default.nix;
     };
   };
+
+  system.stateVersion = "23.11";
 }
 

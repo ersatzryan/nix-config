@@ -19,28 +19,22 @@
 
   outputs = { nixpkgs,... }@inputs:
     let
-      # A list of hosts with their corresponding profiles
-      hosts = [
-        { name = "wsl"; profile = "desktop"; }
-        { name = "desktop"; profile = "desktop"; }
-      ];
-
-      # Helper function to generate a NixOS configuration for a given host
-      mkHost = host:
-        nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/${host.name}/configuration.nix
-            ./profiles/${host.profile}
-          ];
+      nixosConfigurations = {
+      	wsl = nixpkgs.lib.nixosSystem {
+	  system = "x86_64-linux";
+	  specialArgs = {inherit inputs; };
+	  modules = [
+	    ./hosts/wsl/configuration.nix
+	  ];
         };
-
-      # Generates a set of NixOS configurations for each host
-      nixosConfigurations = builtins.listToAttrs (map (host: {
-        name = host.name;
-        value = mkHost host;
-      }) hosts);
+	gamgee = nixpkgs.lib.nixosSystem {
+	  system = "x86_64-linux";
+	  specialArgs = {inherit inputs; };
+	  modules = [
+	    ./hosts/gamgee/configuration.nix
+	  ];
+        };
+      };
     in
     {
       inherit nixosConfigurations;
