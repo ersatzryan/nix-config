@@ -33,8 +33,6 @@
     extraGroups = [ "wheel" ];
   };
 
-  system.stateVersion = "23.11";
-
   home-manager = {
     extraSpecialArgs = { inherit inputs pkgs; };
     users = {
