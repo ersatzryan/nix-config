@@ -20,13 +20,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  nix = {
-    package = pkgs.nixVersions.latest;
-    settings = {
-      experimental-features = ["nix-command" "flakes"];
-    };
-  };
-
   # Basic user setup
   users.users.ryan = {
     isNormalUser = true;
