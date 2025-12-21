@@ -20,23 +20,23 @@
   outputs = { nixpkgs,... }@inputs:
     let
       nixosConfigurations = {
-      	wsl = nixpkgs.lib.nixosSystem {
-	  system = "x86_64-linux";
-	  specialArgs = {inherit inputs; };
-	  modules = [
-	    ./hosts/wsl/configuration.nix
-	  ];
+        wsl = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {inherit inputs; };
+          modules = [
+            ./hosts/wsl/configuration.nix
+          ];
         };
-	gamgee = nixpkgs.lib.nixosSystem {
-	  system = "x86_64-linux";
-	  specialArgs = {inherit inputs; };
-	  modules = [
-	    ./hosts/gamgee/configuration.nix
-	  ];
+        gamgee = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {inherit inputs; };
+          modules = [
+            ./hosts/gamgee/configuration.nix
+          ];
         };
       };
     in
-    {
+      {
       inherit nixosConfigurations;
     };
 }
