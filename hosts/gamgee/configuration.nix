@@ -12,6 +12,7 @@
     ];
 
   nix.settings.extra-experimental-features = "nix-command flakes";
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
