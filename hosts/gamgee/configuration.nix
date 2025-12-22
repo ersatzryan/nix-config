@@ -11,11 +11,13 @@
       inputs.home-manager.nixosModules.home-manager
     ];
 
+  nix.settings.extra-experimental-features = "nix-command flakes";
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "gamgee"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
