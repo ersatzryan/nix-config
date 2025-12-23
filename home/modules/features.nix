@@ -43,7 +43,10 @@ in {
       terminal.ghostty.enable = mkFeature "Ghostty terminal emulator" true;
     };
 
-    cli.enable = mkFeature "CLI tools and utilities" true;
+    cli = {
+      enable = mkFeature "CLI tools and utilities" true;
+      code.enable = mkFeature "Code tools and utilities" true;
+    };
 
     editor.nixvim.enable = mkFeature "nixvim configuration" true;
 
