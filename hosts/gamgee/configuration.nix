@@ -11,8 +11,8 @@
       inputs.home-manager.nixosModules.home-manager
       
       # Desktop environment - comment/uncomment to switch
-      ./desktop-gnome.nix     # GNOME desktop
-      # ./desktop-hyprland.nix  # Hyprland window manager
+      ../modules/desktop/gnome.nix     # GNOME desktop
+      # ../modules/desktop/hyprland.nix  # Hyprland window manager
     ];
 
   nix.settings.extra-experimental-features = "nix-command flakes";
