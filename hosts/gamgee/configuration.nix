@@ -9,6 +9,10 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.home-manager
+      
+      # Desktop environment - comment/uncomment to switch
+      ./desktop-gnome.nix     # GNOME desktop
+      # ./desktop-hyprland.nix  # Hyprland window manager
     ];
 
   nix.settings.extra-experimental-features = "nix-command flakes";
@@ -46,18 +50,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
+  # Desktop environment configuration is in desktop-gnome.nix or desktop-hyprland.nix
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
