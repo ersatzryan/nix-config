@@ -95,7 +95,10 @@
       
       # Enable GUI features for desktop environment
       features = {
-        gui.enable = true;
+        gui = {
+          enable = true;
+          desktop.gnome.enable = true;
+        };
         cli.enable = true;
         editor.nixvim.enable = true;
       };

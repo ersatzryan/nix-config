@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 
 let
   # Helper to create an enable option with optional default value
@@ -17,6 +17,20 @@ in
     gui = {
       enable = lib.mkEnableOption "GUI applications and desktop environment";
 
+      # Desktop environment choice (only one should be enabled)
+      desktop = {
+        gnome.enable = lib.mkEnableOption "GNOME desktop environment";
+        hyprland.enable = lib.mkEnableOption "Hyprland window manager";
+      };
+
+      # Hyprland ecosystem components
+      hyprland = {
+        hyprlock.enable = mkFeature "Hyprlock screen locker" true;
+        hyprpaper.enable = mkFeature "Hyprpaper wallpaper daemon" true;
+        hypridle.enable = mkFeature "Hypridle idle daemon" true;
+        hyprpolkitagent.enable = mkFeature "Hyprland polkit agent" true;
+      };
+
       apps = mkApps [
         "firefox"
         "discord"
@@ -31,5 +45,14 @@ in
     editor.nixvim.enable = mkFeature "nixvim configuration" true;
 
     development.enable = mkFeature "Development tools and environments" null;
+  };
+
+  config = {
+    assertions = [
+      {
+        assertion = !(config.features.gui.desktop.gnome.enable && config.features.gui.desktop.hyprland.enable);
+        message = "Cannot enable both GNOME and Hyprland simultaneously. Please choose one desktop environment.";
+      }
+    ];
   };
 }
