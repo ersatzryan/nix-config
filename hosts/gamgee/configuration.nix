@@ -89,9 +89,16 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs pkgs; };
-    users = {
-      ryan = import ../../home/default.nix;
+    extraSpecialArgs = { inherit inputs; };
+    users.ryan = {
+      imports = [ ../../home ];
+      
+      # Enable GUI features for desktop environment
+      features = {
+        gui.enable = true;
+        cli.enable = true;
+        editor.nixvim.enable = true;
+      };
     };
   };
 

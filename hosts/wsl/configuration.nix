@@ -27,9 +27,14 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs pkgs; };
-    users = {
-      ryan = import ../../home/default.nix;
+    extraSpecialArgs = { inherit inputs; };
+    users.ryan = {
+      imports = [ ../../home ];
+
+      # CLI-only setup for WSL (no GUI)
+      features = {
+        gui.enable = false;
+      };
     };
   };
 
