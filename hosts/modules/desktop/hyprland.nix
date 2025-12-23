@@ -1,13 +1,11 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # Enable Hyprland
   programs.hyprland.enable = true;
 
   # XDG Portal for screen sharing, file pickers, etc.
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
   # Display manager - SDDM works well with Hyprland

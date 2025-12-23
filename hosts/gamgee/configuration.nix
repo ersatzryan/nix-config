@@ -1,16 +1,19 @@
-{ inputs, pkgs, ... }:
-
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.home-manager
+  inputs,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.home-manager
 
-      ../modules/desktop/gnome.nix
-    ];
+    ../modules/desktop/hyprland.nix
+  ];
 
   nix.settings.extra-experimental-features = "nix-command flakes";
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+
+  hardware.graphics.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -48,18 +51,18 @@
   users.users.ryan = {
     isNormalUser = true;
     description = "Ryan Glover";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {inherit inputs;};
     users.ryan = {
-      imports = [ ../../home ];
+      imports = [../../home];
 
       features = {
         gui = {
           enable = true;
-          desktop.gnome.enable = true;
+          desktop.hyprland.enable = true;
         };
         cli.enable = true;
         editor.nixvim.enable = true;
@@ -70,8 +73,8 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-     neovim
-     git
+    neovim
+    git
   ];
 
   system.stateVersion = "25.11";
