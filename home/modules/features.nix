@@ -1,45 +1,35 @@
 { lib, ... }:
 
+let
+  # Helper to create an enable option with optional default value
+  mkFeature = description: default:
+    lib.mkEnableOption description // lib.optionalAttrs (default != null) { inherit default; };
+
+  # Helper to create app options (all default to true when parent is enabled)
+  mkApps = apps:
+    lib.listToAttrs (map (app: {
+      name = app;
+      value.enable = mkFeature "${app} application" true;
+    }) apps);
+in
 {
   options.features = {
     gui = {
       enable = lib.mkEnableOption "GUI applications and desktop environment";
-      
-      apps = {
-        firefox.enable = lib.mkEnableOption "Firefox web browser" // {
-          default = true;
-        };
-        
-        discord.enable = lib.mkEnableOption "Discord" // {
-          default = true;
-        };
-        
-        signal.enable = lib.mkEnableOption "Signal" // {
-          default = true;
-        };
-      };
-      
-      terminal = {
-        ghostty.enable = lib.mkEnableOption "Ghostty terminal emulator" // {
-          default = true;
-        };
-      };
+
+      apps = mkApps [
+        "firefox"
+        "discord"
+        "signal"
+      ];
+
+      terminal.ghostty.enable = mkFeature "Ghostty terminal emulator" true;
     };
-    
-    cli = {
-      enable = lib.mkEnableOption "CLI tools and utilities" // {
-        default = true;
-      };
-    };
-    
-    editor = {
-      nixvim.enable = lib.mkEnableOption "nixvim configuration" // {
-        default = true;
-      };
-    };
-    
-    development = {
-      enable = lib.mkEnableOption "Development tools and environments";
-    };
+
+    cli.enable = mkFeature "CLI tools and utilities" true;
+
+    editor.nixvim.enable = mkFeature "nixvim configuration" true;
+
+    development.enable = mkFeature "Development tools and environments" null;
   };
 }
