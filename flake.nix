@@ -17,6 +17,10 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs,... }@inputs:
@@ -34,6 +38,7 @@
           specialArgs = {inherit inputs; };
           modules = [
             ./hosts/gamgee/configuration.nix
+            inputs.stylix.nixosModules.stylix
           ];
         };
       };

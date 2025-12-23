@@ -4,8 +4,6 @@
       gaps_in = 5;
       gaps_out = 10;
       border_size = 2;
-      # "col.active_border" = activeBorder;
-      # "col.inactive_border" = inactiveBorder;
       resize_on_border = false;
       allow_tearing = false;
       layout = "dwindle";
@@ -19,7 +17,6 @@
         range = 30;
         render_power = 3;
         ignore_window = true;
-        color = "rgba(00000045)";
       };
 
       blur = {

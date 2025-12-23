@@ -5,7 +5,8 @@
     programs.ghostty = {
       enable = true;
       settings = {
-        theme = "TokyoNight";
+        # Theme now managed by Stylix
+        # theme = "TokyoNight";
       };
     };
   };

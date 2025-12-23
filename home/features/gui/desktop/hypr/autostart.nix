@@ -3,6 +3,7 @@
     exec-once = [
       "hypridle"
       "waybar"
+      "hyprpaper"
     ];
   };
 }

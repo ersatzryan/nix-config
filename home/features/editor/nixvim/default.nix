@@ -1,8 +1,5 @@
-{ ... }:
-
-{
+{...}: {
   imports = [
-    ./colorscheme.nix
     ./globals.nix
     ./options.nix
     ./keymaps.nix

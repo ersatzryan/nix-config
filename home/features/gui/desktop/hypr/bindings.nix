@@ -15,8 +15,7 @@
 
       "SUPER, W, killactive,"
 
-      # End active session
-      "SUPER, ESCAPE, exec, hyprlock"
+      "SUPER CTRL, Q, exec, hyprlock"
 
       # Control tiling
       "SUPER, J, togglesplit, # dwindle"

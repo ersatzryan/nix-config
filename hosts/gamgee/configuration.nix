@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./stylix.nix
     inputs.home-manager.nixosModules.home-manager
 
     ../modules/desktop/hyprland.nix

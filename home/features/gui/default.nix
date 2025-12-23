@@ -1,9 +1,10 @@
-{ ... }:
-
-{
+{...}: {
   imports = [
     ./apps.nix
-    ./terminal.nix
     ./desktop
   ];
+
+  config = {
+    programs.ghostty.enable = true;
+  };
 }
