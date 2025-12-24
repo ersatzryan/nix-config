@@ -8,10 +8,6 @@
       enable = true;
       profiles = {
         default = {
-          search = {
-            default = "ddg";
-          };
-
           settings = {
             "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
             "browser.newtabpage.activity-stream.feeds.showSponsoredTopSites" = false;
