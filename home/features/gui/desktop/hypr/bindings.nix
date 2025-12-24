@@ -19,7 +19,7 @@
 
       # Control tiling
       "SUPER, J, togglesplit, # dwindle"
-      "SUPER, P, pseudo, # dwindle"
+      "SUPER SHIFT, P, pseudo, # dwindle"
       "SUPER, V, togglefloating,"
       "SUPER SHIFT, Plus, fullscreen,"
 
