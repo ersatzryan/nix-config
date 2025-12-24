@@ -6,9 +6,11 @@
 }: {
   config = lib.mkIf config.features.cli.enable {
     home.packages = with pkgs; [
+      btop
       direnv
       fzf
       jq
+      lazydocker
       ripgrep
       tldr
       tree
