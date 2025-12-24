@@ -16,6 +16,7 @@ in {
     ./hypr/look.nix
     ./hypr/paper.nix
 
+    ./mako.nix
     ./wofi.nix
     ./waybar.nix
   ];
@@ -23,7 +24,6 @@ in {
   config = lib.mkIf (cfg.enable && cfg.desktop.hyprland.enable) {
     home.packages = with pkgs;
       lib.optionals cfg.desktop.hyprland.enable [
-        mako # Notification daemon
         wl-clipboard # Clipboard manager
         networkmanagerapplet # Network manager applet
         pavucontrol # Volume control
