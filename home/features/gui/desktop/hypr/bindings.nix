@@ -1,7 +1,7 @@
 {...}: {
   wayland.windowManager.hyprland.settings = {
     bind = [
-      "SUPER, space, exec, wofi --show drun --sort-order=alphabetical"
+      "SUPER, space, exec, $launcher"
 
       # Quick App Bindings
       "SUPER, Return, exec, $terminal"

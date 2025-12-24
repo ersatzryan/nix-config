@@ -17,7 +17,7 @@ in {
     ./hypr/paper.nix
 
     ./mako.nix
-    ./wofi.nix
+    ./walker.nix
     ./waybar.nix
   ];
 
@@ -40,12 +40,14 @@ in {
       settings = {
         # Modifier key
         "$mod" = "SUPER";
-        "$terminal" = lib.mkDefault "ghostty";
+
         "$browser" = lib.mkDefault "firefox";
+        "$fileManager" = lib.mkDefault "nautilus --new-window";
+        "$launcher" = lib.mkDefault "walker";
         "$messenger" = lib.mkDefault "signal-desktop";
         "$music" = lib.mkDefault "spotify";
-        "$fileManager" = lib.mkDefault "nautilus --new-window";
         "$passwordManager" = lib.mkDefault "1password";
+        "$terminal" = lib.mkDefault "ghostty";
         "$webapp" = lib.mkDefault "$browser --app";
 
         # Monitor configuration
@@ -55,7 +57,6 @@ in {
 
     programs.hyprlock = lib.mkIf cfg.hyprland.hyprlock.enable {enable = true;};
     programs.waybar = lib.mkIf cfg.hyprland.waybar.enable {enable = true;};
-    programs.wofi = lib.mkIf cfg.hyprland.wofi.enable {enable = true;};
 
     services.hyprpaper = lib.mkIf cfg.hyprland.hyprpaper.enable {enable = true;};
     services.hypridle = lib.mkIf cfg.hyprland.hypridle.enable {enable = true;};

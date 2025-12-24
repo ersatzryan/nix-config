@@ -21,29 +21,33 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    elephant.url = "github:abenz1267/elephant";
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+    };
   };
 
-  outputs = { nixpkgs,... }@inputs:
-    let
-      nixosConfigurations = {
-        wsl = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {inherit inputs; };
-          modules = [
-            ./hosts/wsl/configuration.nix
-          ];
-        };
-        gamgee = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {inherit inputs; };
-          modules = [
-            ./hosts/gamgee/configuration.nix
-            inputs.stylix.nixosModules.stylix
-          ];
-        };
+  outputs = {nixpkgs, ...} @ inputs: let
+    nixosConfigurations = {
+      wsl = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/wsl/configuration.nix
+        ];
       };
-    in
-      {
-      inherit nixosConfigurations;
+      gamgee = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/gamgee/configuration.nix
+          inputs.stylix.nixosModules.stylix
+        ];
+      };
     };
+  in {
+    inherit nixosConfigurations;
+  };
 }
