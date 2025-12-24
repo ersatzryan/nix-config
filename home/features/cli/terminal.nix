@@ -6,7 +6,6 @@
 }: {
   config = lib.mkIf config.features.cli.enable {
     home.packages = with pkgs; [
-      btop
       direnv
       fzf
       jq
@@ -19,6 +18,7 @@
     programs = {
       bash.enable = true;
       bat.enable = true;
+      btop.enable = true;
 
       starship = {
         enable = true;
