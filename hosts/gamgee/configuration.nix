@@ -38,6 +38,14 @@
     };
   };
 
+  programs = {
+    _1password.enable = true;
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = ["ryan"]; # TODO: Make this dynamic
+    };
+  };
+
   services.printing.enable = true;
 
   services.pulseaudio.enable = false;
