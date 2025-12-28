@@ -1,6 +1,4 @@
-{ pkgs, inputs, ... }:
-
-{
+{inputs, ...}: {
   imports = [
     ./modules/features.nix
     ./features/cli
@@ -8,7 +6,10 @@
     ./features/gui
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    overlays = [inputs.nur.overlays.default];
+    config.allowUnfree = true;
+  };
 
   home = {
     username = "ryan";
