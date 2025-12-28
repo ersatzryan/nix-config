@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   imports = [
     ./cmp.nix
     ./floaterm.nix
@@ -10,5 +8,8 @@
     ./treesitter.nix
   ];
 
-  programs.nixvim.plugins.web-devicons.enable = true;
+  programs.nixvim.plugins = {
+    fugitive.enable = true;
+    web-devicons.enable = true;
+  };
 }
