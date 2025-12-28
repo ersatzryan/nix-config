@@ -72,7 +72,7 @@
           tooltip-format-disconnected = "Disconnected";
           interval = 3;
           nospacing = 1;
-          on-click = "ghostty -e nmcli";
+          on-click = "ghostty -e impala";
         };
         battery = {
           interval = 5;
@@ -119,7 +119,7 @@
           format-disabled = "󰂲";
           format-connected = "";
           tooltip-format = "Devices connected: {num_connections}";
-          on-click = "blueberry";
+          on-click = "ghostty -e bluetui";
         };
         wireplumber = {
           # Changed from "pulseaudio"

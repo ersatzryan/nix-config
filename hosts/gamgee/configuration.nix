@@ -15,12 +15,16 @@
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
   hardware.graphics.enable = true;
+  hardware.bluetooth.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "gamgee";
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    wifi.backend = "iwd";
+  };
 
   time.timeZone = "America/New_York";
   i18n = {

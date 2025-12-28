@@ -24,9 +24,11 @@ in {
   config = lib.mkIf (cfg.enable && cfg.desktop.hyprland.enable) {
     home.packages = with pkgs;
       lib.optionals cfg.desktop.hyprland.enable [
-        wl-clipboard # Clipboard manager
+        bluetui # Bluetooth TUI
+        impala # Wifi TUI
         networkmanagerapplet # Network manager applet
         pavucontrol # Volume control
+        wl-clipboard # Clipboard manager
 
         xfce.thunar # File manager
 
