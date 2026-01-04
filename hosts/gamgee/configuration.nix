@@ -21,10 +21,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "gamgee";
-  networking.networkmanager = {
-    enable = true;
-    wifi.backend = "iwd";
-  };
+  networking.networkmanager.enable = true;
 
   time.timeZone = "America/New_York";
   i18n = {
@@ -52,12 +49,9 @@
 
   services.printing.enable = true;
 
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
     pulse.enable = true;
   };
 
