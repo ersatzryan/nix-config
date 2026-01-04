@@ -6,6 +6,7 @@
       # Quick App Bindings
       "SUPER, Return, exec, $terminal"
       "SUPER, B, exec, $browser"
+      "SUPER SHIFT, B, exec, $browser --private-window"
       "SUPER, D, exec, $terminal -e lazydocker"
       "SUPER, F, exec, $fileManager"
       "SUPER, G, exec, $messenger"
@@ -14,8 +15,6 @@
       "SUPER, T, exec, $terminal -e btop"
 
       "SUPER, W, killactive,"
-
-      "SUPER CTRL, Q, exec, hyprlock"
 
       # Control tiling
       "SUPER, J, togglesplit, # dwindle"
@@ -28,6 +27,10 @@
       "SUPER, right, movefocus, r"
       "SUPER, up, movefocus, u"
       "SUPER, down, movefocus, d"
+
+      "ALT, TAB, cyclenext"
+      "ALT, TAB, bringactivetotop"
+      "ALT SHIFT, TAB, bringactivetotop"
 
       # Switch workspaces with mainMod + [0-9]
       "SUPER, 1, workspace, 1"
